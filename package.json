@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "@augu/ichigo": "1.1.2",
+        "@arcsine/win-info": "0.1.2",
+        "find-process": "1.4.3"
+    }
+}
