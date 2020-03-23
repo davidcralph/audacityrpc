@@ -3,7 +3,9 @@ Discord RPC for Audacity
 
 ## Requirements
 ``Node.js``
+
 ``Git (optional)``
+
 ``Audacity``
 
 ## Installation
