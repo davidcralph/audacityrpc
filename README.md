@@ -13,7 +13,7 @@ Discord RPC for Audacity
 1. ``git clone https://github.com/davidjcralph/AudacityDiscordRPC`` (If you don't have Git just go to **Clone or download** and click **Download ZIP**)
 2. ``cd AudacityDiscordRPC``
 3. ``npm i`` (or ``yarn``)
-4. ``npm start`
+4. ``npm start``
 5. Open Audacity and check your Discord status!
 
 ## Screenshot
