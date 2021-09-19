@@ -23,4 +23,4 @@ Discord RPC for Audacity
 Thanks to [FireController1847](https://github.com/FireController1847/photoshop-rich-presence) for making an Adobe Photoshop rich presence utility which I used for reference.
 
 ## License
-[MIT](https://github.com/davidcralpha/audacityrpc)
+[MIT](https://github.com/davidcralph/audacityrpc)
