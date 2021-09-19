@@ -15,49 +15,49 @@ const setRPC = async () => {
     const folder = data.owner.path.split('audacity.')[0];
 
     let pluginsPath = folder + '\\Plug-Ins';
-    let plugins;
+    let plugins = 0;
 
-    if (!fs.existsSync(pluginsPath)) {
-        plugins = 0; // Detect if the user has deleted the Audacity plugins folder
-    } else {
-        try {
-            plugins = fs.readFileSync(pluginsPath).length;
-        } catch (e) { // Sometimes this doesn't work so we set it to 0 below
-            plugins = 0; 
-            console.log('Failed to get plugins count');
-        }
+    // if the user hasn't deleted the folder
+    if (fs.existsSync(pluginsPath)) {
+      try {
+         plugins = fs.readFileSync(pluginsPath).length;
+      } catch (e) {
+        console.log('Failed to get plugins count');
+      }
     }
 
     let title = `Working on ${data.title}`;
     if (data.title === 'Audacity') {
-        title = 'Working on a project'; // If the user has nothing open, we assume they are working on something. todo: check if focused
+      // If the user has nothing open, we assume they are working on something. todo: check if focused
+      title = 'Working on a project';
     }
 
-    const { Version } = await getFileProperties(folder + '\\audacity.exe'); // todo: check to see if this errors on non-windows and catch if it does
+    // todo: check to see if this errors on non-windows and catch if it does
+    const { Version } = await getFileProperties(folder + '\\audacity.exe');
 
     rpc.setActivity({
-        details: title,
-        state: `Plugins: ${plugins}`,
-        assets: {
-            large_image: 'audacity',
-            large_text: 'Audacity ' + Version
-        },
-        instance: false,
-        timestamps: {
-            start: timestamp
-        }
+      details: title,
+      state: `Plugins: ${plugins}`,
+      assets: {
+        large_image: 'audacity',
+        large_text: 'Audacity ' + Version
+      },
+      instance: false,
+      timestamps: {
+        start: timestamp
+      }
     });
   } catch (e) {
     if (e.message.includes('pid')) {
-        console.log('Audacity isn\'t open'); 
+      console.log('Audacity isn\'t open'); 
     } else {
-        console.log(e);
+      console.log(e);
     }
   }
 }
 
 setRPC().then(() => {
-    setInterval(setRPC, 15000);
+  setInterval(setRPC, 15000);
 });
 
 rpc.connect();
